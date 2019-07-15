@@ -8,7 +8,7 @@ Citizen.CreateThread(function()
 			if PedCar and GetPedInVehicleSeat(PedCar, -1) == Ped then
 
 				-- Speed
-				carSpeed = math.ceil(GetEntitySpeed(PedCar) * 3.6)
+				carSpeed = math.ceil(GetEntitySpeed(PedCar) * 2.237)
 				SendNUIMessage({
 					showhud = true,
 					speed = carSpeed
@@ -38,11 +38,11 @@ Citizen.CreateThread(function()
 				-- Turn signal
 				-- SetVehicleIndicatorLights (1 left -- 0 right)
 				local VehIndicatorLight = GetVehicleIndicatorLights(GetVehiclePedIsUsing(PlayerPedId()))
-				if IsControlJustPressed(1, 57) then -- F9 is pressed
+				if IsControlJustPressed(1, 84) then -- F9 is pressed
 					ind.l = not ind.l
 					SetVehicleIndicatorLights(GetVehiclePedIsUsing(GetPlayerPed(-1)), 0, ind.l)
 				end
-				if IsControlJustPressed(1, 56) then -- F10 is pressed
+				if IsControlJustPressed(1, 83) then -- F10 is pressed
 					ind.r = not ind.r
 					SetVehicleIndicatorLights(GetVehiclePedIsUsing(GetPlayerPed(-1)), 1, ind.r)
 				end
@@ -94,9 +94,9 @@ Citizen.CreateThread(function()
 				carSpeed = math.ceil(GetEntitySpeed(PedCar) * 3.6)
 				fuel = GetVehicleFuelLevel(PedCar)
 				rpm = GetVehicleCurrentRpm(PedCar)
-				rpmfuel = 0
+				--rpmfuel = 0
 
-				if rpm > 0.9 then
+				--[[if rpm > 0.9 then
 					rpmfuel = fuel - rpm / 0.8
 					Citizen.Wait(1000)
 				elseif rpm > 0.8 then
@@ -125,7 +125,7 @@ Citizen.CreateThread(function()
 					Citizen.Wait(15000)
 				end
 
-				carFuel = SetVehicleFuelLevel(PedCar, rpmfuel)
+				carFuel = SetVehicleFuelLevel(PedCar, rpmfuel)]]
 
 				SendNUIMessage({
 			showfuel = true,
